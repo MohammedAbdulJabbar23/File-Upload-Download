@@ -60,7 +60,6 @@ func uploadFile(c *gin.Context) {
 		c.String(http.StatusInternalServerError, "Error saving file: %s", err.Error());
 		return;
 	}
-	// Insert file metadata into the database
 	insertQuery := `
 	INSERT INTO files (id, filename, path)
 	VALUES ($1, $2, $3);
@@ -99,5 +98,5 @@ func main() {
 		c.File("./static/index.html");
 	});
 
-	r.Run(":8080");
+	r.Run("0.0.0.0:8080");
 }
